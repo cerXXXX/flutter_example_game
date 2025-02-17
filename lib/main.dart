@@ -1,26 +1,19 @@
-import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
+import 'package:flame/flame.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart'
+if (Platform.isAndroid) 'package:flutter/cupertino.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:first_flame_game/pixel_adventure.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flame/game.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Flame.device.fullScreen();
+  await Flame.device.setLandscape();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Image.asset(
-            'assets/ima ges/image1.png',
-            fit: BoxFit.cover, // Заполняет весь экран
-            width: double.infinity,
-            height: double.infinity,
-          ),
-        ),
-      ),
-    );
-  }
+  PixelAdventure game = PixelAdventure();
+  runApp(GameWidget(game: kDebugMode ? PixelAdventure() : game),
+  );
 }
