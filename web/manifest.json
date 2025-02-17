@@ -1,6 +1,6 @@
 {
-    "name": "flutter_2",
-    "short_name": "flutter_2",
+    "name": "assets_test",
+    "short_name": "assets_test",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

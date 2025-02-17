@@ -1,4 +1,4 @@
-# flutter_2
+# assets_test
 
 A new Flutter project.
 
