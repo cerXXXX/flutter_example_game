@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: Center(
           child: Image.asset(
-            'assets/images/image1.png',
+            'assets/ima ges/image1.png',
             fit: BoxFit.cover, // Заполняет весь экран
             width: double.infinity,
             height: double.infinity,
