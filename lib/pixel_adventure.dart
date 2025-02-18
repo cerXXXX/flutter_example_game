@@ -1,4 +1,5 @@
 import 'package:first_flame_game/components/player.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -7,13 +8,13 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 
 class PixelAdventure extends FlameGame
-    with HasKeyboardHandlerComponents, DragCallbacks {
+    with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
   @override
   Color backgroundColor() => const Color(0xFF211F30);
 
   Player player = Player(character: 'Mask_Dude');
   late JoystickComponent joystick;
-  bool showJoystick = false;
+  bool showJoystick = true;
 
   @override
   FutureOr<void> onLoad() async {
@@ -34,7 +35,7 @@ class PixelAdventure extends FlameGame
   }
 
   @override
-  void update(double dt){
+  void update(double dt) {
     updateJoystick();
     super.update(dt);
   }
@@ -44,14 +45,13 @@ class PixelAdventure extends FlameGame
         knob: SpriteComponent(sprite: Sprite(images.fromCache('HUD/Knob.png'))),
         background: SpriteComponent(
             sprite: Sprite(images.fromCache('HUD/Joystick.png'))),
-        margin: const EdgeInsets.only(left: 32, bottom: 32)
-    );
+        margin: const EdgeInsets.only(left: 32, bottom: 32));
     camera.viewport.add(joystick);
   }
 
   void updateJoystick() {
     if (!showJoystick) return;
-    switch (joystick.direction){
+    switch (joystick.direction) {
       case JoystickDirection.left:
       case JoystickDirection.upLeft:
       case JoystickDirection.downLeft:
