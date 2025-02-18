@@ -1,9 +1,8 @@
-import 'package:first_flame_game/actors/player.dart';
-import 'package:flame/cache.dart';
+import 'package:first_flame_game/components/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:first_flame_game/levels/level.dart';
+import 'package:first_flame_game/components/level.dart';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 
@@ -14,7 +13,7 @@ class PixelAdventure extends FlameGame
 
   Player player = Player(character: 'Mask_Dude');
   late JoystickComponent joystick;
-  bool showJoystick = true;
+  bool showJoystick = false;
 
   @override
   FutureOr<void> onLoad() async {
@@ -56,17 +55,15 @@ class PixelAdventure extends FlameGame
       case JoystickDirection.left:
       case JoystickDirection.upLeft:
       case JoystickDirection.downLeft:
-        player.playerDirection = PlayerDirection.left;
-        // throw Error();
-
+        player.horizontalMovement = -1;
         break;
       case JoystickDirection.right:
       case JoystickDirection.upRight:
       case JoystickDirection.downRight:
-        player.playerDirection = PlayerDirection.right;
+        player.horizontalMovement = 1;
         break;
       default:
-        player.playerDirection = PlayerDirection.none;
+        player.horizontalMovement = 0;
         break;
     }
   }
