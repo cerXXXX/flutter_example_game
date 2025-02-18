@@ -1,18 +1,23 @@
 import 'dart:async';
 
-import 'package:first_flame_game/components/player_hitbox.dart';
-import 'package:first_flame_game/pixel_adventure.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
+import 'package:first_flame_game/components/custom_hitbox.dart';
+import 'package:first_flame_game/pixel_adventure.dart';
 
 class Fruit extends SpriteAnimationComponent
     with HasGameRef<PixelAdventure>, CollisionCallbacks {
   final String fruit;
+  Fruit({
+    this.fruit = 'Apple',
+    position,
+    size,
+  }) : super(
+          position: position,
+          size: size,
+        );
 
-  Fruit({this.fruit = 'Apple', position, size})
-      : super(position: position, size: size);
-
-  bool _collected = false;
   final double stepTime = 0.05;
   final hitbox = CustomHitbox(
     offsetX: 10,
@@ -20,35 +25,49 @@ class Fruit extends SpriteAnimationComponent
     width: 12,
     height: 12,
   );
+  bool collected = false;
 
   @override
   FutureOr<void> onLoad() {
-    debugMode = true;
+    // debugMode = true;
     priority = -1;
 
-    // collidedWithPlayer();
-    add(RectangleHitbox(
+    add(
+      RectangleHitbox(
         position: Vector2(hitbox.offsetX, hitbox.offsetY),
         size: Vector2(hitbox.width, hitbox.height),
-        collisionType: CollisionType.passive));
+        collisionType: CollisionType.passive,
+      ),
+    );
     animation = SpriteAnimation.fromFrameData(
-        game.images.fromCache('Items/Fruits/$fruit.png'),
-        SpriteAnimationData.sequenced(
-            amount: 17, stepTime: stepTime, textureSize: Vector2.all(32)));
+      game.images.fromCache('Items/Fruits/$fruit.png'),
+      SpriteAnimationData.sequenced(
+        amount: 17,
+        stepTime: stepTime,
+        textureSize: Vector2.all(32),
+      ),
+    );
     return super.onLoad();
   }
 
-  void collidedWithPlayer() {
-    if (!_collected) {
+  void collidedWithPlayer() async {
+    if (!collected) {
+      collected = true;
+      if (game.playSounds) {
+        FlameAudio.play('collect_fruit.wav', volume: game.soundVolume);
+      }
       animation = SpriteAnimation.fromFrameData(
-          game.images.fromCache('Items/Fruits/Collected.png'),
-          SpriteAnimationData.sequenced(
-              amount: 6,
-              stepTime: stepTime,
-              textureSize: Vector2.all(32),
-              loop: false));
-      _collected = true;
+        game.images.fromCache('Items/Fruits/Collected.png'),
+        SpriteAnimationData.sequenced(
+          amount: 6,
+          stepTime: stepTime,
+          textureSize: Vector2.all(32),
+          loop: false,
+        ),
+      );
+
+      await animationTicker?.completed;
+      removeFromParent();
     }
-    Future.delayed(const Duration(milliseconds: 400), () => removeFromParent());
   }
 }
