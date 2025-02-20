@@ -1,13 +1,13 @@
 import 'dart:async';
 
+import 'package:first_flame_game/components/jump_button.dart';
+import 'package:first_flame_game/components/level.dart';
+import 'package:first_flame_game/components/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/painting.dart';
-import 'package:first_flame_game/components/jump_button.dart';
-import 'package:first_flame_game/components/player.dart';
-import 'package:first_flame_game/components/level.dart';
 
 class PixelAdventure extends FlameGame
     with
@@ -17,6 +17,7 @@ class PixelAdventure extends FlameGame
         TapCallbacks {
   @override
   Color backgroundColor() => const Color(0xFF211F30);
+
   late CameraComponent cam;
   Player player = Player(character: 'Mask_Dude');
   late JoystickComponent joystick;
@@ -51,16 +52,15 @@ class PixelAdventure extends FlameGame
 
   void addJoystick() {
     joystick = JoystickComponent(
-      priority: 11,
       knob: SpriteComponent(
         sprite: Sprite(
           images.fromCache('HUD/Knob.png'),
-        ),
+        )
       ),
       background: SpriteComponent(
         sprite: Sprite(
           images.fromCache('HUD/Joystick.png'),
-        ),
+        )
       ),
       margin: const EdgeInsets.only(left: 32, bottom: 32),
     );
@@ -100,20 +100,20 @@ class PixelAdventure extends FlameGame
   }
 
   void _loadLevel() {
-    Future.delayed(const Duration(seconds: 1), () {
-      Level world = Level(
-        player: player,
-        levelName: levelNames[currentLevelIndex],
-      );
+    Level world = Level(
+      player: player,
+      levelName: levelNames[currentLevelIndex],
+    );
+    // remove(camera);
 
-      cam = CameraComponent.withFixedResolution(
-        world: world,
-        width: 640,
-        height: 360,
-      );
-      cam.viewfinder.anchor = Anchor.topLeft;
+    cam = CameraComponent.withFixedResolution(
+      world: world,
+      width: 640,
+      height: 360,
+    );
+    cam.viewfinder.anchor = Anchor.topLeft;
 
-      addAll([cam, world]);
-    });
+    add(cam..priority=-1);
+    add(world);
   }
 }
