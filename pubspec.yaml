@@ -99,38 +99,6 @@ flutter:
       - assets/images/Traps/Spikes/
       - assets/images/Traps/Trampoline/
       - assets/tiles/
-      - assets/tiles/images/
-      - assets/tiles/images/Background/
-      - assets/tiles/images/Items/Boxes/Box1/
-      - assets/tiles/images/Items/Boxes/Box2/
-      - assets/tiles/images/Items/Boxes/Box3/
-      - assets/tiles/images/Items/Checkpoints/Checkpoint/
-      - assets/tiles/images/Items/Checkpoints/End/
-      - assets/tiles/images/Items/Checkpoints/Start/
-      - assets/tiles/images/Items/Fruits/
-      - assets/tiles/images/Main_Characters/
-      - assets/tiles/images/Main_Characters/Mask_Dude/
-      - assets/tiles/images/Main_Characters/Ninja_Frog/
-      - assets/tiles/images/Main_Characters/Pink_Man/
-      - assets/tiles/images/Main_Characters/Virtual_Guy/
-      - assets/tiles/images/Menu/Buttons/
-      - assets/tiles/images/Menu/Levels/
-      - assets/tiles/images/Menu/Text/
-      - assets/tiles/images/Other/
-      - assets/tiles/images/Terrain/
-      - assets/tiles/images/Traps/Arrow/
-      - assets/tiles/images/Traps/Blocks/
-      - assets/tiles/images/Traps/Falling_Platforms/
-      - assets/tiles/images/Traps/Fan/
-      - assets/tiles/images/Traps/Fire/
-      - assets/tiles/images/Traps/Platforms/
-      - assets/tiles/images/Traps/Rock_Head/
-      - assets/tiles/images/Traps/Sand_Mud_Ice/
-      - assets/tiles/images/Traps/Saw/
-      - assets/tiles/images/Traps/Spike_Head/
-      - assets/tiles/images/Traps/Spiked_Ball/
-      - assets/tiles/images/Traps/Spikes/
-      - assets/tiles/images/Traps/Trampoline/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

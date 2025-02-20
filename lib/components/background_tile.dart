@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:first_flame_game/pixel_adventure.dart';
 import 'package:flame/components.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';

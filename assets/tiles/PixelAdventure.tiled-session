@@ -3,25 +3,33 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level-02.tmx",
+    "activeFile": "PixelAdventure.tsx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
         "Level-01.tmx": {
-            "scale": 2,
-            "selectedLayer": 1,
+            "expandedObjectLayers": [
+                3,
+                2
+            ],
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 342.75,
-                "y": 184.25
+                "x": 297.99999999999994,
+                "y": 223.66666666666669
             }
         },
         "Level-02.tmx": {
-            "scale": 1.432421875,
+            "expandedObjectLayers": [
+                3,
+                2
+            ],
+            "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 338.9364603217889,
-                "y": 258.65284974093265
+                "x": 320.25,
+                "y": 183.75
             }
         },
         "Pixel Adventure.tsx": {
@@ -29,7 +37,7 @@
         },
         "PixelAdventure.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 3
+            "scaleInEditor": 2
         }
     },
     "last.externalTilesetPath": "D:/IOSproject/flame_game/assets/tiles",
@@ -47,9 +55,9 @@
     "project": "PixelAdventure.tiled-project",
     "property.type": "float",
     "recentFiles": [
-        "PixelAdventure.tsx",
+        "Level-02.tmx",
         "Level-01.tmx",
-        "Level-02.tmx"
+        "PixelAdventure.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
