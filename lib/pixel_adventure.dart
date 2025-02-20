@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:first_flame_game/components/jump_button.dart';
 import 'package:first_flame_game/components/level.dart';
 import 'package:first_flame_game/components/player.dart';
 import 'package:flame/components.dart';
@@ -21,6 +20,7 @@ class PixelAdventure extends FlameGame
   late CameraComponent cam;
   Player player = Player(character: 'Mask_Dude');
   late JoystickComponent joystick;
+  late HudButtonComponent jumpButton;
   bool showControls = true;
   bool playSounds = true;
   double soundVolume = 1.0;
@@ -36,7 +36,8 @@ class PixelAdventure extends FlameGame
 
     if (showControls) {
       addJoystick();
-      add(JumpButton());
+      addJumpButton();
+      
     }
 
     return super.onLoad();
@@ -115,5 +116,22 @@ class PixelAdventure extends FlameGame
 
     add(cam..priority=-1);
     add(world);
+  }
+
+  void addJumpButton() {
+    jumpButton = HudButtonComponent(button: SpriteComponent(
+      sprite: Sprite(images.fromCache('HUD/JumpButton.png')),
+      size: Vector2.all(64),
+    ),
+      margin: const EdgeInsets.only(right: 32, bottom: 32),
+      anchor: Anchor.bottomRight,
+      onPressed: () {
+        player.hasJumped = true;
+      },
+      onReleased: () {
+        player.hasJumped = false;
+      },
+    );
+    add(jumpButton);
   }
 }
